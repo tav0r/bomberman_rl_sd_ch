@@ -1,0 +1,252 @@
+#general notes:
+always delete the q_table such that the q values of the different parameters
+are not in conflict due to possible large differences in the updating order
+of magnitude
+
+#training1
+starting: 190324 0120
+end: 190324 1130
+code from commit: 4bf80fa
+parameter:
+    agent.gamma = 0.9
+    agent.alpha = 0.9
+    agent.temperature = 200
+    agent.temperature_anneal = 0.99995
+    agent.lowest_temperature = 1
+task 2: creates and bombs but no opponents
+runs: 66234
+q_table: q_table_190324_1130_66k_task2_4bf80fa.json
+log: missed to save
+algo: using softmax and SARSA
+visual impression of the performance:
+    Shit. Still kills himself as on of the first actions. No progress visible
+    compared to the untrained model
+
+
+#training2
+starting: 190324 1240
+end: 190324 1440
+code from commit: ab7ca26
+parameter:
+    agent.gamma = 0.9
+    agent.alpha = 0.9
+    agent.temperature = 20
+    agent.temperature_anneal = 0.99995
+    agent.lowest_temperature = 1
+task 2: creates and bombs but no opponents
+runs: 14120
+q_table:q_table_190324_1440_14k_task2_ab7ca26
+log: 190324_1440_14k_task2_ab7ca26
+algo: using softmax and SARSA
+visual impression of the performance:
+same as before: shit. Still kills himself as on of the first actions.
+No progress visible compared to the untrained model
+
+
+#training3
+starting: 190324 1455
+end: NOT COMPLETED BECAUSE NO IMPROVEMENTS EXPECTED
+code from commit: b57dcb4
+parameter:
+    agent.gamma = 0.66
+    agent.alpha = 0.66
+    agent.temperature = 200
+    agent.temperature_anneal = 0.99995
+    agent.lowest_temperature = 1
+task 2: creates and bombs but no opponents
+runs:
+q_table:
+log:
+algo: using softmax and SARSA
+visual impression of the performance:
+
+#training4
+starting: 190324 1500
+end:
+code from commit: e060a711
+parameter:
+        # === epsilon-greedy ===
+        # agent.gamma =  0.65
+        # agent.alpha = 0.9 # 0.65
+        agent.epsilon = 1.0
+        agent.epsilon_min = 0.20  # Relatively high minimum eps would prevent overfitting
+        agent.epsilon_decay = 0.9993
+
+        # === SARSA ===
+        agent.gamma = 0.9 # 0.65           # discount coefficient
+        agent.alpha = 0.9 # 0.65           # learning rate
+        agent.temperature = 200              # first guess of Boltzmann temp.
+        agent.temperature_anneal = 0.99995      # anneal rate of Boltzmann temperature
+        agent.lowest_temperature = 1         # lower bound to prevent the mathematical error
+task 2: creates and bombs but no opponents
+runs: 2314
+q_table: q_table_190324_1520_2k_task2_e060a711_epsilon.json
+log: 190324_1520_2k_task2_e060a711_epsilon
+algo: using epsilon greedy and SARSA
+visual impression of the performance:
+    Same as before: shit. Still kills himself as on of the first actions. No progress visible
+    compared to the untrained model
+
+#training5
+starting: 190324 2045
+end: 190324 2120
+code from commit: a3c2ad4, softmax prob fix, reward_update fix
+parameter:
+        # === epsilon-greedy ===
+        # agent.gamma =  0.65
+        # agent.alpha = 0.9 # 0.65
+        agent.epsilon = 1.0
+        agent.epsilon_min = 0.20  # Relatively high minimum eps would prevent overfitting
+        agent.epsilon_decay = 0.9993
+
+        # === SARSA ===
+        agent.gamma = 0.9 # 0.65           # discount coefficient
+        agent.alpha = 0.9 # 0.65           # learning rate
+        agent.temperature = 200              # first guess of Boltzmann temp.
+        agent.temperature_anneal = 0.99995      # anneal rate of Boltzmann temperature
+        agent.lowest_temperature = 1         # lower bound to prevent the mathematical error
+task 2: creates and bombs but no opponents
+runs: 2902 + 23
+q_table: q_table_190324_2120_3k_task2_a3c2ad4.json
+log: 190324_2120_3k_task2_a3c2ad4.log
+algo: using softmax and SARSA
+visual impression of the performance:
+    Same as before: shit. Still kills himself as on of the first actions. No progress visuable
+    compared to the untrained model
+
+#training6
+starting: 190324 2230
+end: 190325 0030
+code from commit: 9e407c9, opponent in accessible states seems to be fixed
+parameter:
+        # === epsilon-greedy ===
+        # agent.gamma =  0.65
+        # agent.alpha = 0.9 # 0.65
+        agent.epsilon = 1.0
+        agent.epsilon_min = 0.20  # Relatively high minimum eps would prevent overfitting
+        agent.epsilon_decay = 0.9993
+
+        # === SARSA ===
+        agent.gamma = 0.9 # 0.65           # discount coefficient
+        agent.alpha = 0.9 # 0.65           # learning rate
+        agent.temperature = 200              # first guess of Boltzmann temp.
+        agent.temperature_anneal = 0.99995      # anneal rate of Boltzmann temperature
+        agent.lowest_temperature = 1         # lower bound to prevent the mathematical error
+task 3: one random_agent opponent
+runs: 12469
+q_table: q_table_190325_0030_12k_task3_9e407c9.json
+log: 190325_0030_12k_task3_9e407c9.log
+algo: using softmax and SARSA
+visual impression of the performance:
+    Same as before: shit. Still kills himself as on of the first actions. No progress visible
+    compared to the untrained model
+
+#training7
+starting: 190325 0130
+end: 190325 0935
+code from commit: d6233ee
+parameter:
+        # === epsilon-greedy ===
+        # agent.gamma =  0.65
+        # agent.alpha = 0.9 # 0.65
+        agent.epsilon = 1.0
+        agent.epsilon_min = 0.20  # Relatively high minimum eps would prevent overfitting
+        agent.epsilon_decay = 0.9993
+
+        # === SARSA ===
+        agent.gamma = 0.9 # 0.65           # discount coefficient
+        agent.alpha = 0.9 # 0.65           # learning rate
+        agent.temperature = 200              # first guess of Boltzmann temp.
+        agent.temperature_anneal = 0.99995      # anneal rate of Boltzmann temperature
+        agent.lowest_temperature = 1         # lower bound to prevent the mathematical error
+task 3: one random_agent opponent
+runs: 52238
+q_table: q_table_190325_0935_52k_task3_d6233ee.json
+log: 190325_0935_52k_task3_d6233ee.log
+algo: using softmax and SARSA
+visual impression of the performance:
+    Same as before: shit. Still kills himself as on of the first actions. No progress visible
+    compared to the untrained model. probably not writing in q_table does not work properly, only one entry per state.
+
+
+#training8
+starting: 190325 1045
+end: 190325 1200
+code from commit: b02fe63
+parameter:
+        # === epsilon-greedy ===
+        # agent.gamma =  0.65
+        # agent.alpha = 0.9 # 0.65
+        agent.epsilon = 1.0
+        agent.epsilon_min = 0.20  # Relatively high minimum eps would prevent overfitting
+        agent.epsilon_decay = 0.9993
+
+        # === SARSA ===
+        agent.gamma = 0.9 # 0.65           # discount coefficient
+        agent.alpha = 0.9 # 0.65           # learning rate
+        agent.temperature = 200              # first guess of Boltzmann temp.
+        agent.temperature_anneal = 0.99995      # anneal rate of Boltzmann temperature
+        agent.lowest_temperature = 1         # lower bound to prevent the mathematical error
+task 3: one random_agent opponent
+runs: 7287
+q_table: q_table_190325_1200_7k_task3_b02fe63.json
+log: 190325_1200_7k_task3_b02fe63.log
+algo: using softmax and SARSA
+visual impression of the performance:
+    still bad but the visualized q_table finally seems reasonable
+
+#Training 9. still bad. reward_update seemed to be fixed
+starting: 190325 1210
+end: 190325 1505
+code from commit: 03fc06b
+parameter:
+# === epsilon-greedy ===
+# agent.gamma = 0.65
+# agent.alpha = 0.9 # 0.65
+agent.epsilon = 1.0
+agent.epsilon_min = 0.20 # Relatively high minimum eps would
+prevent overfitting
+agent.epsilon_decay = 0.9993
+
+# === SARSA ===
+agent.gamma = 0.9 # 0.65 # discount coefficient
+agent.alpha = 0.9 # 0.65 # learning rate
+agent.temperature = 200 # first guess of Boltzmann
+temp.
+agent.temperature_anneal = 0.9 # anneal rate of Boltzmann
+temperature
+agent.lowest_temperature = 1 # lower bound to prevent
+the mathematical error
+task 3: one random_agent opponent
+runs: 9795
+q_table: q_table_190325_1505_9k_task3_03fc06b.json
+log: 190325_1505_9k_task3_03fc06b.log
+algo: using softmax and SARSA
+visual impression of the performance:
+as bad as before
+
+#Training 10. task 1. poor performance.
+starting: 190325 1540
+end: 190325 1845
+code from commit: 2ccd88f
+parameter:
+        # === epsilon-greedy ===
+        # agent.gamma =  0.66
+        # agent.alpha = 0.9 # 0.66
+        agent.epsilon = 1.0
+        agent.epsilon_min = 0.20
+        agent.epsilon_decay = 0.9993
+
+        # === SARSA ===
+        agent.gamma = 0.66                  # discount coefficient
+        agent.alpha = 0.66                  # learning rate
+        agent.temperature = 200             # first guess of Boltzmann temp.
+        agent.temperature_anneal = 0.9      # anneal rate of Boltzmann temperature
+        agent.lowest_temperature = 1        # lower bound to prevent the mathematical error
+task 1: coins only
+runs: 10304
+q_table: q_table_190325_1845_10k_task1_2ccd88f.json
+log: 190325_1845_10k_task1_2ccd88f.log
+algo: using softmax and SARSA
+visual impression of the performance:
+    poor performance. neo still didn't learn much.
