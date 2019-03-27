@@ -189,31 +189,11 @@ def setup(agent):
         agent.epsilon_decay = 0.9993
 
         # === SARSA ===
-<<<<<<< HEAD
         agent.gamma = 0.9  # 0.66           # discount coefficient
         agent.alpha = 0.9  # 0.66           # learning rate
         agent.temperature = 200             # first guess of Boltzmann temp.
         agent.temperature_anneal = 0.99995  # anneal rate of Boltzmann temperature
         agent.lowest_temperature = 1        # lower bound to prevent the mathematical error
-=======
-        agent.gamma = 0.9 # 0.65           # discount coefficient
-        agent.alpha = 0.9 # 0.65           # learning rate
-        agent.temperature = 200              # first guess of Boltzmann temp.
-        agent.temperature_anneal = 0.9      # anneal rate of Boltzmann temperature
-        agent.lowest_temperature = 1         # lower bound to prevent the mathematical error
-
-        # Fixed length FIFO queues to avoid repeating the same actions
-        agent.coordinate_history = deque([], 20)
-        # While this timer is positive, agent will not hunt/attack opponents
-        agent.ignore_others_timer = 0
-
-        # reduce the problem the surroundings of the agent
-        # in case a tile of state is "empty".
-        agent.radius = 0
-        agent.radius_anneal = 2.5
-        # weigths for diffrent kinds of obejcts
-        agent.weights = {"arena": 1, "coins": 2, "others": 3} # TODO not used yet
->>>>>>> chris_train
 
         # Load the q_table:
         try:  # If the q_table.json file doesn't exit yet.
